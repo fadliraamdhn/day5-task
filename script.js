@@ -1,7 +1,6 @@
 let arrayCard = []
 
 const cardContainer = document.getElementById("cardContainer");
-const iconContainer = document.getElementById("cardContainer");
 const form = document.getElementById("myForm");
 
 function addProject (e) {
@@ -32,6 +31,7 @@ function addProject (e) {
 
     let project = {
         projectName,
+        startYear,
         durationInMonths,
         description,
         nodeJs,
@@ -44,7 +44,6 @@ function addProject (e) {
     arrayCard.push(project)
     addCard()
     form.reset()
-    console.log(project)
 }
 
 function addCard() {
@@ -70,9 +69,10 @@ function addCard() {
         }
 
         card.innerHTML = `
+        <div class="card pb-2 px-1" style="width: 22rem;">
         <img class="py-2 px-2" src="${arrayCard[i].image}" class="card-img-top">
         <div class="card-body d-flex flex-column justify-content-between">
-            <h6 class="card-title fw-bold">${arrayCard[i].projectName}</h6>
+            <h6 class="card-title fw-bold">${arrayCard[i].projectName} - ${arrayCard[i].startYear}</h6>
             <p class="text-light-emphasis">durasi : ${arrayCard[i].durationInMonths} Bulan</p>
             <p class="card-text">${arrayCard[i].description}</p>
             <div id="icon-container" class="d-flex px-2 mb-3 gap-1">
@@ -82,6 +82,7 @@ function addCard() {
                     <a href="#" class="btn btn-dark w-50 fw-bold">edit</a>
                     <a href="#" class="btn btn-dark w-50 fw-bold">delete</a>
                 </div>
+            </div>
             </div>
         `;
         cardContainer.appendChild(card);
